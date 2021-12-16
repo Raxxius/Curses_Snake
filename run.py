@@ -30,10 +30,17 @@ def main(stdscr):
     game_area.clear()
     instructions.clear()
 
+    score.addstr("Score: ")
     try:
-        rectangle(stdscr, 0, 0, 23, 74)
+        rectangle(stdscr, 0, 0, 19, 79)
     except curses.error:
         pass
+    instructions.addstr("\n  Use the Keypad to move the snake to the food, press P to pause and X to exit")
+
+    stdscr.refresh()
+    instructions.refresh()
+    score.refresh()
+    stdscr.getch()
 
 
 wrapper(main)
