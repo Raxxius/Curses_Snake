@@ -53,7 +53,6 @@ def game(stdscr):
     instructions = curses.newwin(1, 79, 23, 0)
     stdscr.clear()
 
-    curses.curs_set(0)
     player_score.clear()
     game_area.clear()
     instructions.clear()
@@ -74,6 +73,7 @@ def game(stdscr):
     snake = [(11, 75), (11, 76), (11, 77)]
 
     # Initiate food
+
     food = [(random.randint(1, 21), random.randint(1, 78))]
 
     # Initial direction of snake = lefet
@@ -100,7 +100,7 @@ def game(stdscr):
 
         if key == KEY_DOWN:
             if prev_key == KEY_UP:
-                key = prev_key
+                key = KEY_UP
             else:
                 y += 1
         if key == KEY_UP:
