@@ -70,14 +70,17 @@ def game(stdscr):
     stdscr.refresh()
     instructions.refresh()
     player_score.refresh()
-    stdscr.getch()
 
     # Initate snake
-    snake = [(11, 40), (12,40), (13,40)]
-
+    snake = [(11, 75), (11, 76), (11, 77)]
+    
 
     # game logic
-    score = 0
+    while True:
+        event = game_area.getch()
+
+        for l in snake:
+            game_area.addch(l[0], l[1], "*")
 
 # def scores(stdscr):
 
