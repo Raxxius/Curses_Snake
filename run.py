@@ -21,8 +21,9 @@ def main(stdscr):
 
     stdscr.clear()
 # Game area
-    gamearea = curses.newwin(23, 79, 0, 0)
-    gamearea.clear()
+    score = curses.newwin(1, 10, 0, 34)
+    game_area = curses.newwin(23, 79, 0, 0)
+    game_area.clear()
 
     try:
         rectangle(stdscr, 0, 0, 23, 74)
