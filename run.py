@@ -3,7 +3,7 @@ import time
 # import gspread
 from curses import wrapper, KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP
 from curses.textpad import Textbox, rectangle
-from google.oauth2.service_account import Credentials
+# from google.oauth2.service_account import Credentials
 
 """
 SCOPE = [
