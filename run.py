@@ -1,5 +1,6 @@
 import curses
 import time
+import random
 # import gspread
 from curses import wrapper, KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP
 from curses.textpad import Textbox, rectangle
@@ -19,28 +20,52 @@ SHEET = GSPREAD_CLIENT.open('curses_snake')
 """
 
 def main(stdscr):
+    intro(stdscr)
+    # game()
+    # scores()
 
+def intro(stdscr):
+
+    title = curses.newwin(7, 32, 7, 25)
+    stdscr.clear()
+    title.clear()
+    title.addstr(f"   _____             __       \n"
+                 f"  / ___/____  ____ _/ /_____  \n"
+                 f"  \__ \/ __ \/ __ `/ //_/ _ \ \n"
+                 f" ___/ / / / / /_/ / ,< /  __/ \n"
+                 f"/____/_/ /_/\__,_/_/|_|\___/  ")
+    
+    
+    stdscr.refresh()
+    title.refresh()
+    stdscr.getch()
+
+def game(stdscr):
     # screens
     score = curses.newwin(1, 10, 0, 34)
-    game_area = curses.newwin(23, 79, 0, 0)
-    instructions = curses.newwin(3, 79, 20, 0)
+    game_area = curses.newwin(21, 78, 1, 1)
+    instructions = curses.newwin(1, 79, 23, 0)
     stdscr.clear()
 
+    curses.curs_set(0)
     score.clear()
     game_area.clear()
     instructions.clear()
 
+    rectangle(stdscr, 0, 0, 22, 79)
     score.addstr("Score: ")
+
     try:
-        rectangle(stdscr, 0, 0, 19, 79)
+        instructions.addstr("  Use the Keypad to move the snake to the food, press P to pause and X to exit")
     except curses.error:
         pass
-    instructions.addstr("\n  Use the Keypad to move the snake to the food, press P to pause and X to exit")
 
     stdscr.refresh()
     instructions.refresh()
     score.refresh()
     stdscr.getch()
+
+#def scores(stdscr):
 
 
 wrapper(main)
