@@ -74,7 +74,7 @@ def game(stdscr):
     snake = [(11, 75), (11, 76), (11, 77)]
 
     # Initiate foos
-    food = []
+    food = [(random.randint(1, 21), random.randint(1, 78))]
 
     key = curses.KEY_LEFT
 
@@ -99,30 +99,34 @@ def game(stdscr):
         if key == curses.KEY_DOWN:
             if prev_key == curses.KEY_UP:
                 key = prev_key
-            else: y += 1
+            else:
+                y += 1
         if key == curses.KEY_UP:
             if prev_key == curses.KEY_DOWN:
                 key = prev_key
-            else: y -= 1
+            else:
+                y -= 1
         if key == curses.KEY_RIGHT:
             if prev_key == curses.KEY_LEFT:
                 key = prev_key
-            else: x += 1
+            else:
+                x += 1
         if key == curses.KEY_LEFT:
             if prev_key == curses.KEY_RIGHT:
                 key = prev_key
-            else: x -= 1
+            else:
+                x -= 1
         
         snake.insert(0, (y, x))
 
         # check border collision
-        if y == 0: 
+        if y == 0:
             break
-        if y == 22: 
+        if y == 20:
             break
-        if x == 0: 
+        if x == 0:
             break
-        if x == 78: 
+        if x == 78:
             break
         
         # check snake collision
