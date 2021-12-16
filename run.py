@@ -57,9 +57,8 @@ def game(stdscr):
     player_score.clear()
     game_area.clear()
     instructions.clear()
-    game_area.delay(1)
 
-    rectangle(stdscr, 0, 0, 22, 79)
+    # rectangle(stdscr, 0, 0, 22, 78)
     player_score.addstr(f"Score: {score}")
 
     try:
@@ -76,12 +75,13 @@ def game(stdscr):
     snake = [(11, 75), (11, 76), (11, 77)]
     key_start = curses.KEY_RIGHT
 
-    GAME_EXIT = 
+    GAME_EXIT = 88
+    key = curses.KEY_LEFT
 
     # game logic
-    while key != "x"
+    while key != GAME_EXIT:
 
-        win.timeout(150) #game speed
+        game_area.timeout(150) #game speed
 
         prev_key = key
         event = game_area.getch()
@@ -95,13 +95,13 @@ def game(stdscr):
         y = snake[0][0]
         x = snake[0][1]
 
-        if key == curse.KEY_DOWN:        
+        if key == curses.KEY_DOWN:        
             y += 1
-        if key == curse.KEY_UP:        
+        if key == curses.KEY_UP:        
             y -= 1
-        if key == curse.KEY_RIGHT:        
+        if key == curses.KEY_RIGHT:        
             x += 1
-        if key == curse.KEY_LEFT:        
+        if key == curses.KEY_LEFT:        
             x -= 1
         
         snake.insert(0, (y, x))
@@ -111,11 +111,11 @@ def game(stdscr):
         if y == 0: break
         if y == 22: break
         if x == 0: break
-        if x == 79: break
+        if x == 78: break
         
         # check snake collision
 
-        if snake
+        if snake[0] in snake[1:]: break
 
         for l in snake:
             game_area.addch(l[0], l[1], "*")
