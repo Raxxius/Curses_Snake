@@ -25,7 +25,7 @@ def main(stdscr):
     gamearea.clear()
 
     try:
-        rectangle(stdscr, 0, 0, 23, 79)
+        rectangle(stdscr, 0, 0, 23, 74)
     except curses.error:
         pass
 
