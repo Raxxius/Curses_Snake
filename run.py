@@ -81,7 +81,8 @@ def game(stdscr):
     # game logic
     while key != 120 or 88:
 
-        game_area.timeout(150) #game speed
+        # game speed
+        game_area.timeout(150) 
         game_area.border(0)
 
         prev_key = key
@@ -92,34 +93,44 @@ def game(stdscr):
             key = prev_key
         
         # calculate snake coordinates
-
         y = snake[0][0]
         x = snake[0][1]
 
-        if key == curses.KEY_DOWN:        
-            y += 1
-        if key == curses.KEY_UP:        
-            y -= 1
-        if key == curses.KEY_RIGHT:        
-            x += 1
-        if key == curses.KEY_LEFT:        
-            x -= 1
+        if key == curses.KEY_DOWN:
+            if prev_key == curses.KEY_UP:
+                key = prev_key
+            else: y += 1
+        if key == curses.KEY_UP:
+            if prev_key == curses.KEY_DOWN:
+                key = prev_key
+            else: y -= 1
+        if key == curses.KEY_RIGHT:
+            if prev_key == curses.KEY_LEFT:
+                key = prev_key
+            else: x += 1
+        if key == curses.KEY_LEFT:
+            if prev_key == curses.KEY_RIGHT:
+                key = prev_key
+            else: x -= 1
         
         snake.insert(0, (y, x))
 
         # check border collision
-
-        if y == 0: break
-        if y == 22: break
-        if x == 0: break
-        if x == 78: break
+        if y == 0: 
+            break
+        if y == 22: 
+            break
+        if x == 0: 
+            break
+        if x == 78: 
+            break
         
         # check snake collision
+        if snake[0] in snake[1:]: 
+            break
 
-        if snake[0] in snake[1:]: break
-
-        for l in snake:
-            game_area.addch(l[0], l[1], "*")
+        for lenght in snake:
+            game_area.addch(lenght[0], lenght[1], "*")
 
         # move snake
         else:  
