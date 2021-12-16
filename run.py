@@ -22,12 +22,12 @@ SHEET = GSPREAD_CLIENT.open('curses_snake')
 
 def main(stdscr):
     intro(stdscr)
-    # game()
+    game(stdscr)
     # scores()
 
 
 def intro(stdscr):
-
+    curses.curs_set(0)
     title = curses.newwin(13, 32, 7, 25)
     stdscr.clear()
     title.clear()
@@ -47,18 +47,19 @@ def intro(stdscr):
 
 def game(stdscr):
     # screens
-    score = curses.newwin(1, 10, 0, 34)
+    score = 0
+    player_score = curses.newwin(1, 10, 0, 34)
     game_area = curses.newwin(21, 78, 1, 1)
     instructions = curses.newwin(1, 79, 23, 0)
     stdscr.clear()
 
     curses.curs_set(0)
-    score.clear()
+    player_score.clear()
     game_area.clear()
     instructions.clear()
 
     rectangle(stdscr, 0, 0, 22, 79)
-    score.addstr("Score: ")
+    player_score.addstr(f"Score: {score}")
 
     try:
         instructions.addstr("  Use the Keypad to move the snake to the food," 
@@ -68,8 +69,15 @@ def game(stdscr):
 
     stdscr.refresh()
     instructions.refresh()
-    score.refresh()
+    player_score.refresh()
     stdscr.getch()
+
+    # Initate snake
+    snake = [(11, 40), (12,40), (13,40)]
+
+
+    # game logic
+    score = 0
 
 # def scores(stdscr):
 
