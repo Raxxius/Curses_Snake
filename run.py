@@ -19,11 +19,16 @@ SHEET = GSPREAD_CLIENT.open('curses_snake')
 
 def main(stdscr):
 
-    stdscr.clear()
-# Game area
+    # screens
     score = curses.newwin(1, 10, 0, 34)
     game_area = curses.newwin(23, 79, 0, 0)
+    instructions = curses.newwin(3, 79, 20, 0)
+    stdscr.clear()
+# Game area
+
+    score.clear()
     game_area.clear()
+    instructions.clear()
 
     try:
         rectangle(stdscr, 0, 0, 23, 74)
