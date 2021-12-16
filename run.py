@@ -57,6 +57,7 @@ def game(stdscr):
     player_score.clear()
     game_area.clear()
     instructions.clear()
+    game_area.delay(1)
 
     rectangle(stdscr, 0, 0, 22, 79)
     player_score.addstr(f"Score: {score}")
@@ -73,11 +74,35 @@ def game(stdscr):
 
     # Initate snake
     snake = [(11, 75), (11, 76), (11, 77)]
-    
+    key_start = curses.KEY_RIGHT
+
+    GAME_EXIT = 
 
     # game logic
-    while True:
+    while key != "x"
+
+        win.timeout(150) #game speed
+
+        prev_key = key
         event = game_area.getch()
+        key = event if event != -1 else prev_key
+
+        if key not in [curses.KEY_LEFT, curses.KEY_RIGHT, curses.KEY_UP, curses.KEY_DOWN, GAME_EXIT]:
+            key = prev_key
+        
+        # calculate snake coordinates
+
+        y = snake[0][0]
+        x = snake[0][1]
+
+        if key == curse.KEY_DOWN:        
+            y += 1
+        if key == curse.KEY_UP:        
+            y -= 1
+        if key == curse.KEY_RIGHT:        
+            y += 1
+        if key == curse.KEY_LEFT:        
+            y -= 1
 
         for l in snake:
             game_area.addch(l[0], l[1], "*")
