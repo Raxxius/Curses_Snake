@@ -19,26 +19,31 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('curses_snake')
 """
 
+
 def main(stdscr):
     intro(stdscr)
     # game()
     # scores()
 
+
 def intro(stdscr):
 
-    title = curses.newwin(7, 32, 7, 25)
+    title = curses.newwin(13, 32, 7, 25)
     stdscr.clear()
     title.clear()
-    title.addstr(f"   _____             __       \n"
-                 f"  / ___/____  ____ _/ /_____  \n"
-                 f"  \__ \/ __ \/ __ `/ //_/ _ \ \n"
-                 f" ___/ / / / / /_/ / ,< /  __/ \n"
-                 f"/____/_/ /_/\__,_/_/|_|\___/  ")
-    
+    title.addstr("Welcome to: \n"
+                 "   _____             __       \n"
+                 "  / ___/____  ____ _/ /_____  \n"
+                 "  \__ \/ __ \/ __ `/ //_/ _ \ \n"
+                 " ___/ / / / / /_/ / ,< /  __/ \n"
+                 "/____/_/ /_/\__,_/_/|_|\___/  \n"
+                 "\n"
+                 "press any key to continue")
     
     stdscr.refresh()
     title.refresh()
     stdscr.getch()
+
 
 def game(stdscr):
     # screens
@@ -56,7 +61,8 @@ def game(stdscr):
     score.addstr("Score: ")
 
     try:
-        instructions.addstr("  Use the Keypad to move the snake to the food, press P to pause and X to exit")
+        instructions.addstr("  Use the Keypad to move the snake to the food," 
+                            "press P to pause and X to exit")
     except curses.error:
         pass
 
@@ -65,7 +71,7 @@ def game(stdscr):
     score.refresh()
     stdscr.getch()
 
-#def scores(stdscr):
+# def scores(stdscr):
 
 
 wrapper(main)
