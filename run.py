@@ -49,7 +49,7 @@ def game(stdscr):
     # screens
     score = 0
     player_score = curses.newwin(1, 10, 0, 34)
-    game_area = curses.newwin(21, 78, 1, 1)
+    game_area = curses.newwin(21, 79, 1, 1)
     game_area.keypad(1)
     instructions = curses.newwin(1, 79, 23, 0)
     stdscr.clear()
@@ -59,7 +59,6 @@ def game(stdscr):
     game_area.clear()
     instructions.clear()
 
-    # rectangle(stdscr, 0, 0, 22, 78)
     player_score.addstr(f"Score: {score}")
 
     try:
@@ -72,8 +71,11 @@ def game(stdscr):
     instructions.refresh()
     player_score.refresh()
 
-    # Initate snake
+    # Initiate snake
     snake = [(11, 75), (11, 76), (11, 77)]
+
+    # Initiate foos
+    food = []
 
     GAME_EXIT = 88
     key = curses.KEY_LEFT
@@ -82,6 +84,7 @@ def game(stdscr):
     while key != 88:
 
         game_area.timeout(150) #game speed
+        game_area.border(0)
 
         prev_key = key
         event = game_area.getch()
