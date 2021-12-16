@@ -50,6 +50,7 @@ def game(stdscr):
     score = 0
     player_score = curses.newwin(1, 10, 0, 34)
     game_area = curses.newwin(21, 78, 1, 1)
+    game_area.keypad(1)
     instructions = curses.newwin(1, 79, 23, 0)
     stdscr.clear()
 
@@ -73,19 +74,18 @@ def game(stdscr):
 
     # Initate snake
     snake = [(11, 75), (11, 76), (11, 77)]
-    key_start = curses.KEY_RIGHT
 
     GAME_EXIT = 88
     key = curses.KEY_LEFT
 
     # game logic
-    while key != GAME_EXIT:
+    while key != 88:
 
         game_area.timeout(150) #game speed
 
         prev_key = key
         event = game_area.getch()
-        key = event if event != -1 else prev_key
+        key = key if event == -1 else event
 
         if key not in [curses.KEY_LEFT, curses.KEY_RIGHT, curses.KEY_UP, curses.KEY_DOWN, GAME_EXIT]:
             key = prev_key
@@ -119,6 +119,11 @@ def game(stdscr):
 
         for l in snake:
             game_area.addch(l[0], l[1], "*")
+
+        # move snake
+        else:  
+            last = snake.pop()
+            game_area.addch(last[0], last[1], ' ')
 
 # def scores(stdscr):
 
