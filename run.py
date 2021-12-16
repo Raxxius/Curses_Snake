@@ -3,7 +3,6 @@ import time
 import random
 # import gspread
 from curses import wrapper, KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP
-from curses.textpad import Textbox, rectangle
 # from google.oauth2.service_account import Credentials
 
 """
@@ -77,11 +76,10 @@ def game(stdscr):
     # Initiate foos
     food = []
 
-    GAME_EXIT = 88
     key = curses.KEY_LEFT
 
     # game logic
-    while key != 88:
+    while key != 120 or 88:
 
         game_area.timeout(150) #game speed
         game_area.border(0)
@@ -90,7 +88,7 @@ def game(stdscr):
         event = game_area.getch()
         key = key if event == -1 else event
 
-        if key not in [curses.KEY_LEFT, curses.KEY_RIGHT, curses.KEY_UP, curses.KEY_DOWN, GAME_EXIT]:
+        if key not in [curses.KEY_LEFT, curses.KEY_RIGHT, curses.KEY_UP, curses.KEY_DOWN, 120, 88]:
             key = prev_key
         
         # calculate snake coordinates
