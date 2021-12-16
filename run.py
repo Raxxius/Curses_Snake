@@ -73,9 +73,10 @@ def game(stdscr):
     # Initiate snake
     snake = [(11, 75), (11, 76), (11, 77)]
 
-    # Initiate foos
+    # Initiate food
     food = [(random.randint(1, 21), random.randint(1, 78))]
 
+    # Initial direction of snake = lefet
     key = curses.KEY_LEFT
 
     # game logic
@@ -90,7 +91,7 @@ def game(stdscr):
         key = key if event == -1 else event
 
         # Ignore keystrokes that aren't arrow keys, P(or p) and X(or x)
-        if key not in [curses.KEY_LEFT, curses.KEY_RIGHT, curses.KEY_UP, curses.KEY_DOWN, 120, 88]:
+        if key not in [KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, 120, 88]:
             key = prev_key
         
         # calculate snake coordinates
