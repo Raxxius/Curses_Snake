@@ -100,9 +100,22 @@ def game(stdscr):
         if key == curse.KEY_UP:        
             y -= 1
         if key == curse.KEY_RIGHT:        
-            y += 1
+            x += 1
         if key == curse.KEY_LEFT:        
-            y -= 1
+            x -= 1
+        
+        snake.insert(0, (y, x))
+
+        # check border collision
+
+        if y == 0: break
+        if y == 22: break
+        if x == 0: break
+        if x == 79: break
+        
+        # check snake collision
+
+        if snake
 
         for l in snake:
             game_area.addch(l[0], l[1], "*")
