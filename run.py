@@ -89,6 +89,7 @@ def game(stdscr):
         event = game_area.getch()
         key = key if event == -1 else event
 
+        # Ignore keystrokes that aren't arrow keys, P(or p) and X(or x)
         if key not in [curses.KEY_LEFT, curses.KEY_RIGHT, curses.KEY_UP, curses.KEY_DOWN, 120, 88]:
             key = prev_key
         
@@ -96,23 +97,23 @@ def game(stdscr):
         y = snake[0][0]
         x = snake[0][1]
 
-        if key == curses.KEY_DOWN:
-            if prev_key == curses.KEY_UP:
+        if key == KEY_DOWN:
+            if prev_key == KEY_UP:
                 key = prev_key
             else:
                 y += 1
-        if key == curses.KEY_UP:
-            if prev_key == curses.KEY_DOWN:
+        if key == KEY_UP:
+            if prev_key == KEY_DOWN:
                 key = prev_key
             else:
                 y -= 1
-        if key == curses.KEY_RIGHT:
-            if prev_key == curses.KEY_LEFT:
+        if key == KEY_RIGHT:
+            if prev_key == KEY_LEFT:
                 key = prev_key
             else:
                 x += 1
-        if key == curses.KEY_LEFT:
-            if prev_key == curses.KEY_RIGHT:
+        if key == KEY_LEFT:
+            if prev_key == KEY_RIGHT:
                 key = prev_key
             else:
                 x -= 1
