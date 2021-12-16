@@ -1,6 +1,6 @@
 import curses
 import time
-import gspread
+# import gspread
 from curses import wrapper, KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP
 from curses.textpad import Textbox, rectangle
 from google.oauth2.service_account import Credentials
@@ -25,7 +25,6 @@ def main(stdscr):
     game_area = curses.newwin(23, 79, 0, 0)
     instructions = curses.newwin(3, 79, 20, 0)
     stdscr.clear()
-# Game area
 
     score.clear()
     game_area.clear()
