@@ -26,7 +26,6 @@ def main(stdscr):
 
 
 def intro(stdscr):
-    curses.curs_set(0)
     title = curses.newwin(13, 32, 7, 25)
     stdscr.clear()
     title.clear()
@@ -74,7 +73,8 @@ def game(stdscr):
 
     # Initiate food
 
-    food = [(random.randint(1, 21), random.randint(1, 78))]
+    food = [random.randint(1, 21), random.randint(1, 78)]
+    game_area.addch(food[0], food[1], ".")
 
     # Initial direction of snake = lefet
     key = curses.KEY_LEFT
@@ -135,13 +135,19 @@ def game(stdscr):
         if snake[0] in snake[1:]: 
             break
 
-        for lenght in snake:
-            game_area.addch(lenght[0], lenght[1], "*")
-
-        # move snake
+        if snake[0] == food:
+            food = []
+            score += 1
+            while food == []:
+                food = [randint(1, 21), randint(1, 78)]
+                if food in snake: food = []
+            game_area.addch(food[0], food[1], ".")
+        # remove last part of snake
         else:  
             last = snake.pop()
             game_area.addch(last[0], last[1], ' ')
+        game_area.addch(snake[0][0], snake[0][1], "*")
+
 
 # def scores(stdscr):
 
