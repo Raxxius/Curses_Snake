@@ -47,7 +47,7 @@ def game(stdscr):
     # screens
     score = 0
     curses.noecho()
-    curses.curs_set(0)
+    curses.curs_set(2)
     player_score = curses.newwin(1, 10, 0, 34)
     game_area = curses.newwin(22, 79, 1, 1)
     game_area.keypad(1)
@@ -76,7 +76,7 @@ def game(stdscr):
     # Initiate food
 
     food = [random.randint(1, 21), random.randint(1, 78)]
-    game_area.addch(food[0], food[1], ".")
+    game_area.addch(food[0], food[1], "o")
 
     # Initial direction of snake = lefet
     key = KEY_LEFT
@@ -137,7 +137,7 @@ def game(stdscr):
             while food == []:
                 food = [random.randint(1, 21), random.randint(1, 78)]
                 if food in snake: food = []
-            game_area.addch(food[0], food[1], ".")
+            game_area.addch(food[0], food[1], "o")
         # remove last part of snake
         else:  
             last = snake.pop()
