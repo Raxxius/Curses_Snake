@@ -131,8 +131,6 @@ The game has been deployed on Heroku, and can be found at:
 https://curses-snake.herokuapp.com/
 
 
-
-
 ## Credits
 - https://patorjk.com/software/taag/#p=display&h=2&v=2&f=Slant&t=Snake ascii art for snake title page
 
@@ -147,6 +145,17 @@ Snake game in python youtube vidoes:
 How to use python curses:
 - https://www.youtube.com/watch?v=Db4oc8qc9RU&t=197s&ab_channel=TechWithTim
 - https://docs.python.org/3/howto/curses.html
+
+## Future features
+
+- Add colour - the title screen has been colored, but the rest of the game is monochrome.
+
+- Add perm highscore table - using Googlesheets to create a permenant highscore table that will allow players to compete
+against themselves and other players.
+
+- Add difficulty - difficulty plan 1 - game speed increase
+difficulty plan 2 - gameover even (poison food) that spawns for a set amount of time.
+
 
 
 ## Bugs
