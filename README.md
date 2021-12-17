@@ -156,7 +156,9 @@ against themselves and other players.
 - Add difficulty - difficulty plan 1 - game speed increase
 difficulty plan 2 - gameover even (poison food) that spawns for a set amount of time.
 
+- Have animated title and score screens
 
+- solve existing un-fixed bugs
 
 ## Bugs
 
