@@ -81,6 +81,22 @@ Then an infinite loop is generated while the game is running.
 
 ![game_screen](docs/screenshots/game_screen.png)
 
+The infinite loop is setup to run until the x (or X) key is pressed.
+
+Keystrokes will be recorded, with the arrow keys causing an event. If there is no
+keystroke in a set time frame (150), then the previous key event is used. IE if the 
+snake is moving left, and no keystroke is detected in the time intervel, then the 
+progam will continue as if a left keystoke had been recorded.
+
+The next set of instructions check if the arrow key is the opposite direction of the
+snake, ie if the keystroke is left, and the snake is traveling right. If this is 
+found to be the case, then the keystroke is ignored, as doubling back on itself would
+cause a gameover event.
+
+Following this it moves the snake to the next coordinate
+
+
+
 ## Credits
 - https://patorjk.com/software/taag/#p=display&h=2&v=2&f=Slant&t=Snake ascii art for snake title page
 
@@ -96,19 +112,20 @@ How to use python curses:
 - https://www.youtube.com/watch?v=Db4oc8qc9RU&t=197s&ab_channel=TechWithTim
 - https://docs.python.org/3/howto/curses.html
 
+## Bugs
 
-## bug
+### bug
 - While code prevented right and down keystrokes from doubling back, left and up keystrokes would result in gameover.
-## solution
+### solution
 - changed code to directly interact at the keystoke entry. This fixed the code.
 
-## bug
+### bug
 - curses.curs_set(0) caused an error in Heroku application
-## solution
+### solution
 - no solution, had to remove curses.curs_set() function.
 
-## bug
+### bug
 - Heroku wasing loading gspread
-## solution
+### solution
 - no solution found.
 
