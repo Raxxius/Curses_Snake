@@ -66,6 +66,19 @@ situated in the middle of the screen
 
 ![title_screen](docs/screenshots/title_screen.png)
 
+### Game
+
+The game function is the core function.
+
+Firstly it sets up 3 windows in the terminal, the score window, the game_area window
+and the instructions window. Using the stdscr refresh the screens.
+
+The snake is initalised 3 coordinates long in a set place heading left.
+
+A piece of food is added at a random location via random.randint.
+
+Then an infinite loop is generated while the game is running.
+
 
 
 ## Credits
@@ -84,8 +97,6 @@ How to use python curses:
 - https://docs.python.org/3/howto/curses.html
 
 
-
-
 ## bug
 - While code prevented right and down keystrokes from doubling back, left and up keystrokes would result in gameover.
 ## solution
@@ -96,4 +107,8 @@ How to use python curses:
 ## solution
 - no solution, had to remove curses.curs_set() function.
 
+## bug
+- Heroku wasing loading gspread
+## solution
+- no solution found.
 
