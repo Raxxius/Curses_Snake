@@ -79,7 +79,7 @@ A piece of food is added at a random location via random.randint.
 
 Then an infinite loop is generated while the game is running.
 
-
+![game_screen](docs/screenshots/game_screen.png)
 
 ## Credits
 - https://patorjk.com/software/taag/#p=display&h=2&v=2&f=Slant&t=Snake ascii art for snake title page
