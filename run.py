@@ -46,8 +46,10 @@ def intro(stdscr):
 def game(stdscr):
     # screens
     score = 0
+    curses.noecho()
+    curses.curs_set(0)
     player_score = curses.newwin(1, 10, 0, 34)
-    game_area = curses.newwin(21, 79, 1, 1)
+    game_area = curses.newwin(22, 79, 1, 1)
     game_area.keypad(1)
     instructions = curses.newwin(1, 79, 23, 0)
     stdscr.clear()
@@ -77,18 +79,18 @@ def game(stdscr):
     game_area.addch(food[0], food[1], ".")
 
     # Initial direction of snake = lefet
-    key = curses.KEY_LEFT
+    key = KEY_LEFT
 
     # game logic
     while key != 120 or 88:
 
         # game speed
-        game_area.timeout(150) 
+        game_area.timeout(150)
         game_area.border(0)
 
         prev_key = key
-        event = game_area.getch()
-        key = key if event == -1 else event
+        new_key = game_area.getch()
+        key = key if new_key == -1 else new_key
 
         # Ignore keystrokes that aren't arrow keys, P(or p) and X(or x)
         if key not in [KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, 120, 88]:
@@ -98,33 +100,15 @@ def game(stdscr):
         y = snake[0][0]
         x = snake[0][1]
 
-        if key == KEY_DOWN:
-            if prev_key == KEY_UP:
-                key = KEY_UP
-            else:
-                y += 1
-        if key == KEY_UP:
-            if prev_key == KEY_DOWN:
-                key = prev_key
-            else:
-                y -= 1
-        if key == KEY_RIGHT:
-            if prev_key == KEY_LEFT:
-                key = prev_key
-            else:
-                x += 1
-        if key == KEY_LEFT:
-            if prev_key == KEY_RIGHT:
-                key = prev_key
-            else:
-                x -= 1
-        
-        snake.insert(0, (y, x))
+        game_area.addstr(1, 1, f"{key}")
+        game_area.refresh()
+
+        snake.insert(0, [snake[0][0] + (key == KEY_DOWN and 1) + (key == KEY_UP and -1), snake[0][1] + (key == KEY_LEFT and -1) + (key == KEY_RIGHT and 1)])
 
         # check border collision
         if y == 0:
             break
-        if y == 20:
+        if y == 21:
             break
         if x == 0:
             break
@@ -138,8 +122,11 @@ def game(stdscr):
         if snake[0] == food:
             food = []
             score += 1
+            player_score.clear()
+            player_score.addstr(f"Score: {score}")
+            player_score.refresh()
             while food == []:
-                food = [randint(1, 21), randint(1, 78)]
+                food = [random.randint(1, 21), random.randint(1, 78)]
                 if food in snake: food = []
             game_area.addch(food[0], food[1], ".")
         # remove last part of snake
