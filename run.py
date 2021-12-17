@@ -127,7 +127,7 @@ def game(stdscr):
         
         # check snake collision
         if snake[0] in snake[1:]: 
-            gameover(stdscr, score)
+            scores(stdscr, score)
 
         if snake[0] == food:
             food = []
