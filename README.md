@@ -138,6 +138,7 @@ https://curses-snake.herokuapp.com/
 
 Snake game in python youtube vidoes:
 - https://www.youtube.com/watch?v=M_npdRYD4K0&t=932s&ab_channel=PythonEngineer
+    This is the core influnce for the code structure of the snake game
 - https://www.youtube.com/watch?v=tgt02bFoOu0&ab_channel=NathanJeanShow
 - https://www.youtube.com/watch?v=BvbqI6eDh0c&ab_channel=IndianPythonista
 - https://www.youtube.com/watch?v=rbasThWVb-c&ab_channel=EngineerMan
