@@ -90,12 +90,24 @@ def game(stdscr):
 
         prev_key = key
         new_key = game_area.getch()
+
+        # Ingore keystroke that is opposite to prevent snake from backing into itself
+        if new_key == KEY_LEFT and key == KEY_RIGHT:
+            new_key = prev_key
+        if new_key == KEY_RIGHT and key == KEY_LEFT:
+            new_key = prev_key
+        if new_key == KEY_UP and key == KEY_DOWN:
+            new_key = prev_key
+        if new_key == KEY_DOWN and key == KEY_UP:
+            new_key = prev_key
+
         key = key if new_key == -1 else new_key
 
         # Ignore keystrokes that aren't arrow keys, P(or p) and X(or x)
         if key not in [KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, 120, 88]:
             key = prev_key
         
+
         # calculate snake coordinates
         y = snake[0][0]
         x = snake[0][1]
