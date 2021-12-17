@@ -1,9 +1,8 @@
 import curses
-import time
 import random
-# import gspread
+import gspread
 from curses import wrapper, KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP
-# from google.oauth2.service_account import Credentials
+from google.oauth2.service_account import Credentials
 
 """
 SCOPE = [
@@ -53,7 +52,6 @@ def game(stdscr):
     game_area.keypad(1)
     instructions = curses.newwin(1, 79, 23, 0)
     stdscr.clear()
-
 
     player_score.clear()
     game_area.clear()
@@ -162,5 +160,6 @@ def scores(stdscr, score):
     stdscr.refresh()
     title.refresh()
     stdscr.getch()
+
 
 wrapper(main)
