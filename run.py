@@ -1,8 +1,8 @@
 import curses
 import random
-import gspread
+# import gspread
 from curses import wrapper, KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP
-from google.oauth2.service_account import Credentials
+# from google.oauth2.service_account import Credentials
 
 """
 SCOPE = [

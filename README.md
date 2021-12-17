@@ -18,7 +18,7 @@ pacman.
 The purpose of this project was to recreate the classic snake game within a python terminal. The project
 utilises curses to create the interface.
 
-## Design features
+## Design Features
 
 The snake game will have design features around the classic 
 snake game rules. The following game rules are as follows:
@@ -38,7 +38,19 @@ or it own tail.
 7. After the gameover event, a gameover screen will show the
 players score.
 
+## User Experience
 
+The user will:
+- Load the game and reach a title screen wellcoming them to the
+game.
+- Start the game.
+- Control the snake with the cursor keys, pause the game with p
+and exit the game with x.
+- Move the snake over food to increase the snakes size by 1, and
+score a point.
+- When the game ends, a gameover screen will be displayed to
+show the player their final score.
+- Pressing a key will restart the game.
 
 
 
