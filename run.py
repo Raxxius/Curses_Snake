@@ -22,7 +22,7 @@ SHEET = GSPREAD_CLIENT.open('curses_snake')
 def main(stdscr):
     intro(stdscr)
     game(stdscr)
-    # scores()
+    scores(stdscr, score)
 
 
 def intro(stdscr):
@@ -47,12 +47,13 @@ def game(stdscr):
     # screens
     score = 0
     curses.noecho()
-    curses.curs_set(2)
+    # curses.curs_set(0)
     player_score = curses.newwin(1, 10, 0, 34)
     game_area = curses.newwin(22, 79, 1, 1)
     game_area.keypad(1)
     instructions = curses.newwin(1, 79, 23, 0)
     stdscr.clear()
+
 
     player_score.clear()
     game_area.clear()
@@ -116,17 +117,17 @@ def game(stdscr):
 
         # check border collision
         if y == 0:
-            break
+            scores(stdscr, score)
         if y == 21:
-            break
+            scores(stdscr, score)
         if x == 0:
-            break
+            scores(stdscr, score)
         if x == 78:
-            break
+            scores(stdscr, score)
         
         # check snake collision
         if snake[0] in snake[1:]: 
-            break
+            gameover(stdscr, score)
 
         if snake[0] == food:
             food = []
@@ -145,7 +146,21 @@ def game(stdscr):
         game_area.addch(snake[0][0], snake[0][1], "*")
 
 
-# def scores(stdscr):
-
+def scores(stdscr, score):
+    title = curses.newwin(13, 32, 7, 25)
+    stdscr.clear()
+    title.clear()
+    title.addstr("Welcome to: \n"
+                 "   _____             __       \n"
+                 "  / ___/____  ____ _/ /_____  \n"
+                 "  \__ \/ __ \/ __ `/ //_/ _ \ \n"
+                 " ___/ / / / / /_/ / ,< /  __/ \n"
+                 "/____/_/ /_/\__,_/_/|_|\___/  \n"
+                 "\n"
+                 f"game over - your score is {score}")
+    
+    stdscr.refresh()
+    title.refresh()
+    stdscr.getch()
 
 wrapper(main)
