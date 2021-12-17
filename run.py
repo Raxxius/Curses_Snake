@@ -100,9 +100,6 @@ def game(stdscr):
         y = snake[0][0]
         x = snake[0][1]
 
-        game_area.addstr(1, 1, f"{key}")
-        game_area.refresh()
-
         snake.insert(0, [snake[0][0] + (key == KEY_DOWN and 1) + (key == KEY_UP and -1), snake[0][1] + (key == KEY_LEFT and -1) + (key == KEY_RIGHT and 1)])
 
         # check border collision
