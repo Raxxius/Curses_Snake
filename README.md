@@ -93,7 +93,43 @@ snake, ie if the keystroke is left, and the snake is traveling right. If this is
 found to be the case, then the keystroke is ignored, as doubling back on itself would
 cause a gameover event.
 
-Following this it moves the snake to the next coordinate
+Following this it moves the snake head to the next coordinate. There is a check to see 
+if the new coordinate head of the snake is either out of bounds (at the border of the 
+game_area) or if the head has hit it's own tail. If this has happened then the score() 
+function is called and the gameover screen is loaded.
+
+After this check, the code then checks to see if the new head is at the same coordinate
+as the food, if this is the case, then the score is updated, a new food is generated at
+random coordinates. If the food coordinates are generated inside the snake, the food 
+generation process is repeated. 
+
+This process creates a new snake part, and would make the snake become larger at each
+event, as this is not standard of the game rules of snake, the final part of the game
+function pops the last part of the snake off unless the snake head is has hit the food
+at this event. As such head is generated each event, and the last tail is popped off 
+unless the head is generated onto food, whereby the tail is retained.
+
+### Score
+
+The score function is called when a gameover event is reached. This screen is similar
+to the Intro screen, however it has gameover, and score.
+
+Pressing a key will restart the main() function, taking the player back to the title
+screen.
+
+## Testing
+
+The game has been tested in Github terminal on a PC using the github web interface.
+
+Following deployment to Heroku, the game was tested on a PC using Chrome as a web
+interface.
+
+## Deployment
+
+The game has been deployed on Heroku, and can be found at:
+
+https://curses-snake.herokuapp.com/
+
 
 
 
@@ -111,6 +147,7 @@ Snake game in python youtube vidoes:
 How to use python curses:
 - https://www.youtube.com/watch?v=Db4oc8qc9RU&t=197s&ab_channel=TechWithTim
 - https://docs.python.org/3/howto/curses.html
+
 
 ## Bugs
 
