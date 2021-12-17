@@ -23,20 +23,14 @@ utilises curses to create the interface.
 The snake game will have design features around the classic 
 snake game rules. The following game rules are as follows:
 
-1. The snake will always move forward unless a keypress is 
-recorded.
-2. The snake will change direction when a key of the direction
-pad is pressed.
-3. The exception is the opposite direction of travel of the snake
-, as this would cause a gameover event.
+1. The snake will always move forward unless a keypress is  recorded.
+2. The snake will change direction when a key of the direction pad is pressed.
+3. The exception is the opposite direction of travel of the snake , as this would cause a gameover event.
 4. Food will be placed on the map in a random coordinate.
-5. When the snake hits the food, a point will be scored, the 
-snake will get one unit longer, and a new piece of food will
-be added to the map at a random point.
-6. Gameover events will occur if the snake either hits a border
-or it own tail.
-7. After the gameover event, a gameover screen will show the
-players score.
+5. When the snake hits the food, a point will be scored, the snake will get one unit longer, and a new 
+piece of food will be added to the map at a random point.
+6. Gameover events will occur if the snake either hits a border or it own tail.
+7. After the gameover event, a gameover screen will show the players score.
 
 ## User Experience
 
@@ -51,6 +45,26 @@ score a point.
 - When the game ends, a gameover screen will be displayed to
 show the player their final score.
 - Pressing a key will restart the game.
+
+## Coding
+
+Snake is a relatively straightforward game, with a single user input and no AI required, just random
+placement of food.
+
+The code is broken into 3 subfunctions, relating to each specific screen.
+
+- Intro
+- Game
+- Scores
+
+### Intro
+
+The intro screen has ascii art of the name Snake, and a press any key to continue.
+
+Using the curses setup, the screen is established via stdscr, and a the texbox is 
+situated in the middle of the screen
+
+![title_screen](docs/screenshots/title_screen.png)
 
 
 

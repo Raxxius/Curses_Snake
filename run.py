@@ -25,6 +25,8 @@ def main(stdscr):
 
 
 def intro(stdscr):
+    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
+    GREEN_TEXT = curses.color_pair(1)
     title = curses.newwin(13, 32, 7, 25)
     stdscr.clear()
     title.clear()
@@ -35,7 +37,7 @@ def intro(stdscr):
                  " ___/ / / / / /_/ / ,< /  __/ \n"
                  "/____/_/ /_/\__,_/_/|_|\___/  \n"
                  "\n"
-                 "press any key to continue")
+                 "press any key to continue", GREEN_TEXT)
     
     stdscr.refresh()
     title.refresh()
@@ -134,7 +136,7 @@ def game(stdscr):
             player_score.addstr(f"Score: {score}")
             player_score.refresh()
             while food == []:
-                food = [random.randint(1, 21), random.randint(1, 78)]
+                food = [random.randint(1, 20), random.randint(1, 77)]
                 if food in snake: food = []
             game_area.addch(food[0], food[1], "o")
         # remove last part of snake
@@ -148,14 +150,14 @@ def scores(stdscr, score):
     title = curses.newwin(13, 32, 7, 25)
     stdscr.clear()
     title.clear()
-    title.addstr("Welcome to: \n"
+    title.addstr("Game over! \n"
                  "   _____             __       \n"
                  "  / ___/____  ____ _/ /_____  \n"
                  "  \__ \/ __ \/ __ `/ //_/ _ \ \n"
                  " ___/ / / / / /_/ / ,< /  __/ \n"
                  "/____/_/ /_/\__,_/_/|_|\___/  \n"
                  "\n"
-                 f"game over - your score is {score}")
+                 f"your score is {score}")
     
     stdscr.refresh()
     title.refresh()
